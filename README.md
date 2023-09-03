@@ -1,4 +1,10 @@
 # expo-appcenter
+This is a fork of [BelkaLab - expo-appcenter](https://www.npmjs.com/package/expo-appcenter)
+
+Changes are
+* the way iOS AppCenterReactNative is being added to AppDelegate to prevent 
+compilation error in retuning value when doing build in EAS
+* upgraded @expo/config-plugins version to 7.2.2
 
 Expo plugin for react native appcenter SDK
 # API documentation
@@ -18,35 +24,39 @@ For bare React Native projects, you must ensure that you have [installed and con
 
 #### Prerequisites:
 
-- App project using Expo SDK 41+.
+- App project using Expo SDK 49+.
 - Installed `expo-cli@4.4.4` or later.
 - Installed `appcenter` JavaScript libraries:
 
 ```sh
+# using yarn
 yarn add appcenter appcenter-analytics appcenter-crashes
+
+# using npm
+npm install appcenter appcenter-analytics appcenter-crashes
 ```
 
 #### With `expo install`
 
 ```
-expo install expo-appcenter
+expo install @tmjeee/expo-appcenter
 ```
 
 #### Without `expo install`
 
 ```sh
 # using yarn
-yarn add expo-appcenter
+yarn add @tmjeee/expo-appcenter
 
 # using npm
-npm install expo-appcenter
+npm install @tmjeee/expo-appcenter
 ```
 
 Open your `app.json` and update your `plugins` section (`expo install` would do it for you):
 
 ```json
 {
-  "plugins": ["expo-appcenter"]
+  "plugins": ["@tmjeee/expo-appcenter"]
 }
 ```
 
@@ -57,3 +67,15 @@ The plugin needs to know the location of your app's [Appcenter Config files](htt
 # Contributing
 
 Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).
+
+
+# To publish to NPM
+have an `.npmrc` file with content like
+```
+@tmjeee:registry=https://registry.npmjs.org
+//registry.npmjs.org/:_authToken=xxxxxxxxxxxx
+```
+
+```shell
+$> npm publish --access public
+```

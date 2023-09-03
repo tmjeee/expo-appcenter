@@ -24,10 +24,11 @@ export function modifyObjcAppDelegate(contents: string): string {
   // Add invocation
   if (!contents.includes(methodInvocationBlock)) {
     contents = contents.replace(
-      /\[super application\:application didFinishLaunchingWithOptions\:launchOptions\]/g,
-      `${methodInvocationBlock}
-      
-[super application:application didFinishLaunchingWithOptions:launchOptions]`
+      /self\.initialProps = @\{\};/g,
+      `
+          self.initialProps = @{};
+          ${methodInvocationBlock}
+`
     );
   }
 
