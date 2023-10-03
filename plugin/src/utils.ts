@@ -3,7 +3,6 @@ import {
   ModPlatform,
   withDangerousMod,
 } from "@expo/config-plugins";
-import { ExpoConfig } from "@expo/config-types";
 import fs from "fs/promises";
 import path from "path";
 
@@ -14,7 +13,7 @@ interface CopyFileProps {
 }
 
 export const withCopyFile: ConfigPlugin<CopyFileProps> = (
-  config: ExpoConfig,
+  config,
   { platform, from, to }
 ) =>
   withDangerousMod(config, [
